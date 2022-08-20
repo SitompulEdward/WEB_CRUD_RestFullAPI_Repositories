@@ -34,6 +34,8 @@ namespace WEB_CRUD_API
                 options.UseMySQL(Configuration.GetConnectionString("mysql"));
             });
 
+            services.AddCors();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -52,6 +54,14 @@ namespace WEB_CRUD_API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WEB_CRUD_API v1"));
             }
+
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
 
             app.UseHttpsRedirection();
 

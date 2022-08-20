@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace WEB_CRUD_API.Controllers
             _context = context;
         }
 
+        //[EnableCors("AllowOrigin")]
         [Route("getall")]
         [HttpGet]
         public IActionResult GetEmployee()
